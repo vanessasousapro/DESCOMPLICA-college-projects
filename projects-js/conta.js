@@ -1,20 +1,20 @@
-class ContaCliente{
-    constructor(numeroConta,saldo,debito,credito){
+class ContaCliente {
+    constructor(numeroConta, saldo, debito, credito) {
         this.numeroConta = numeroConta;
         this.saldo = saldo;
         this.debito = debito;
         this.credito = credito;
     }
 
-    calcularSaldoAtual(){
+    calcularSaldoAtual() {
         return this.saldo - this.debito + this.credito
     }
 
-    verificarSaldo(){
+    verificarSaldo() {
         const saldoAtual = this.calcularSaldoAtual()
-        if(saldoAtual >= 0){
+        if (saldoAtual >= 0) {
             alert(`Saldo Positivo R$ ${saldoAtual}`)
-        }else{
+        } else {
             alert(' Saldo Negativo R$ ' + saldoAtual)
         }
     }
@@ -26,4 +26,4 @@ let debito = parseFloat(prompt(' Digite o debito do cliente'))
 let credito = parseFloat(prompt(' Digite o credito do cliente'))
 
 let conta = new ContaCliente(numeroConta, saldo, debito, credito)
-conta .verificarSaldo();
+conta.verificarSaldo();
