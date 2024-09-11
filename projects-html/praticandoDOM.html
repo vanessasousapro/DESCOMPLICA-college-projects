@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praticando o uso do DOM Part-01</title>
+</head>
+
+<body>
+    <!-- Div com a classe 'estilo', que será manipulada pelo JavaScript -->
+    <div class="estilo">
+        div com estilo
+    </div>
+
+    <!-- Outra div com a mesma classe 'estilo' -->
+    <div class="estilo">
+        div com estilo 2
+    </div>
+
+    <!-- Parágrafo com a classe 'estilo' -->
+    <p class="estilo">Elemento p com estilo</p>
+
+    <!-- Parágrafo com um span que também possui a classe 'estilo' -->
+    <p>Isso é <span class="estilo">Elemento Span</span> Dentro do um p</p>
+</body>
+
+<script>
+    // Seleciona todos os elementos com a classe 'estilo'
+    const listaEstilo = document.querySelectorAll(".estilo");
+
+    // Loop que percorre todos os elementos encontrados
+    for (i = 0; i < listaEstilo.length; i++) {
+        // Muda a cor de fundo dos elementos para azul
+        listaEstilo[i].style.backgroundColor = "blue";
+
+        // Muda a cor do texto dos elementos para branco
+        listaEstilo[i].style.color = "white";
+
+        // Converte o texto dentro dos elementos para letras maiúsculas
+        listaEstilo[i].innerText = listaEstilo[i].innerText.toUpperCase();
+    }
+</script>
+
+</html>
