@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhando Com Eventos</title>
+</head>
+
+<body>
+    <p>Clique no botão a seguir e veja o resultado</p>
+    <form>
+        <input type="button" onclick="exemploEvento()" value="mensgem de alerta">
+    </form>
+    <h1 id="exemplo" onmouseover="passarOMouseporCima()" onmouseout="tirarMouse()">Troca De Texto</h1>
+</body>
+
+<script>
+    function exemploEvento() {
+        alert("Mostrando o Alerta")
+    }
+
+    function passarOMouseporCima() {
+        document.getElementById("exemplo").innerHTML = "Trocou o texto"
+    }
+    function tirarMouse() {
+        document.getElementById("exemplo").innerHTML = "Trocou o texto novamente"
+    }
+</script>
+
+</html>
