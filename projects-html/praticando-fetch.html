@@ -1,0 +1,71 @@
+/*
+O código faz uma requisição à API "https://fakestoreapi.com/products?limit=4" para obter informações sobre 4 produtos da
+loja fake.
+
+A função "fetch" é utilizada para realizar essa requisição. Ela retorna uma Promise que, ao ser resolvida, contém a
+resposta da API.
+
+A resposta é convertida para JSON utilizando o método "response.json()", que também retorna uma Promise. Quando a
+conversão é concluída, os dados dos produtos são passados para a função "preencherCarrinho". A função
+"preencherCarrinho" recebe o array de produtos e percorre cada item utilizando "forEach".
+
+Para cada produto, é criado um elemento "div" que contém:
+1. Uma imagem do produto, com largura de 200px e altura de 300px.
+2. O nome do produto, que é exibido dentro de um elemento "p".
+3. O preço do produto, também exibido dentro de um elemento "p".
+Esses elementos são inseridos no contêiner de carrinho, que foi previamente selecionado pelo ID "carrinho-container".
+
+Se ocorrer algum erro durante a requisição ou processamento, o bloco "catch" captura o erro e o exibe no console.*/
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praticando Fetch</title>
+</head>
+
+<body>
+    <h1>Usando https://fakestoreapi.com/products?limit=4</h1>
+    <div id="carrinho-container"></div>
+</body>
+<script>
+    fetch('https://fakestoreapi.com/products?limit=4')
+        .then(response => response.json())
+        .then(data => {
+            preencherCarrinho(data)
+        })
+        .catch(error => {
+            console.log('Ocorreu um error:', error)
+        })
+
+    function preencherCarrinho(produtos) {
+
+        const carrinhoContainer = document.getElementById('carrinho-container');
+
+        produtos.forEach(produto => {
+            const divProduto = document.createElement('div');
+            divProduto.classList.add('produto');
+
+            const imagem = document.createElement('img');
+            imagem.src = produto.image;
+            imagem.width = 200
+            imagem.height = 300
+            divProduto.appendChild(imagem);
+
+            const nome = document.createElement('p');
+            nome.textContent = produto.title;
+            divProduto.appendChild(nome);
+
+            const preco = document.createElement('p')
+            preco.textContent = ` R$ ${produto.price}`;
+            divProduto.appendChild(preco)
+
+            carrinhoContainer.appendChild(divProduto)
+        });
+    }
+</script>
+
+</html>
